@@ -1,4 +1,4 @@
-package huiiuh.com.chat;
+package huiiuh.com.chat.control.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import com.hyphenate.util.DensityUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import huiiuh.com.chat.R;
 import huiiuh.com.chat.Util.SpUtil;
 
 /**

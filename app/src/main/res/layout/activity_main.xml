@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="huiiuh.com.chat.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/home_bottom_parent_bg"
+        android:orientation="horizontal">
 
-</android.support.constraint.ConstraintLayout>
+        <RadioButton
+            android:id="@+id/rb_message"
+            style="@style/MainButtonStyle"
+            android:drawableTop="@drawable/message_button_selector"
+            android:text="消息"/>
+
+        <RadioButton
+            android:id="@+id/rb_contact"
+            style="@style/MainButtonStyle"
+            android:drawableTop="@drawable/contact_button_selector"
+            android:text="通讯录"/>
+
+        <RadioButton
+            android:id="@+id/rb_discover"
+            style="@style/MainButtonStyle"
+            android:drawableTop="@drawable/discover_button_selector"
+            android:paddingTop="10dp"
+
+            android:text="发现"/>
+
+        <RadioButton
+            android:id="@+id/rb_me"
+            style="@style/MainButtonStyle"
+            android:drawableTop="@drawable/me_button_selector"
+            android:text="我"/>
+
+
+    </RadioGroup>
+
+</LinearLayout>

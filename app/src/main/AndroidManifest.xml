@@ -28,9 +28,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".control.activity.MainActivity">
         </activity>
-        <activity android:name=".Welcome_Activity">
+        <activity android:name=".control.activity.Welcome_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -63,7 +63,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".LoginAndRegister">
+        <activity android:name=".control.activity.LoginAndRegister">
         </activity>
 
 

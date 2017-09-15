@@ -1,4 +1,4 @@
-package huiiuh.com.chat;
+package huiiuh.com.chat.control.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -31,7 +31,10 @@ import com.tencent.tauth.UiError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import huiiuh.com.chat.AppConstant;
+import huiiuh.com.chat.R;
 import huiiuh.com.chat.Util.SpUtil;
+import huiiuh.com.chat.model.Model;
 
 public class LoginAndRegister extends AppCompatActivity implements View.OnClickListener {
     LinearLayout line;
@@ -85,7 +88,9 @@ public class LoginAndRegister extends AppCompatActivity implements View.OnClickL
                     }
                 }
             }
-           // finish();
+            finish();
+            Intent intent = new Intent(getApplication(), MainActivity.class);
+            startActivity(intent);
         }
 
     };
@@ -138,6 +143,10 @@ public class LoginAndRegister extends AppCompatActivity implements View.OnClickL
 
 
     private void login() {
+        final ProgressDialog mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("拼命登录中。。");
+        mProgressDialog.show();
+
         if (TextUtils.isEmpty(username.getText().toString()) || TextUtils.isEmpty(password.getText().toString())) {
 
             Toast.makeText(LoginAndRegister.this, "请输入完整", Toast.LENGTH_SHORT).show();
@@ -145,8 +154,6 @@ public class LoginAndRegister extends AppCompatActivity implements View.OnClickL
         } else {
             EMClient.getInstance().login(username.getText().toString(), password.getText().toString(), new EMCallBack() {
 
-
-                private ProgressDialog mProgressDialog;
 
                 @Override
                 public void onSuccess() {
@@ -159,12 +166,13 @@ public class LoginAndRegister extends AppCompatActivity implements View.OnClickL
                             Toast.makeText(LoginAndRegister.this, "登录成功", Toast.LENGTH_SHORT).show();
                         }
                     });
-                    SpUtil.putBooelan(LoginAndRegister.this, "islogined", true);
-                    SpUtil.putString(LoginAndRegister.this, "nickname", username.getText().toString());
-                    SpUtil.putBooelan(LoginAndRegister.this, "huanxindenglu", true);
-                    Intent intent = new Intent(LoginAndRegister.this, huiiuh.com.chat.MainActivity.class);
+                    //                    SpUtil.putBooelan(LoginAndRegister.this, "islogined", true);
+                    //                    SpUtil.putString(LoginAndRegister.this, "nickname", username.getText().toString());
+                    //                    SpUtil.putBooelan(LoginAndRegister.this, "huanxindenglu", true);
+
+                    Model.getInstance().getUserAccountDao().addAccount(new huiiuh.com.chat.model.bean.UserInfo(username.getText().toString()));
+                    Intent intent = new Intent(LoginAndRegister.this, MainActivity.class);
                     startActivity(intent);
-                 //   EMClient.getInstance().logout(true);
                     finish();
                 }
 
@@ -183,9 +191,7 @@ public class LoginAndRegister extends AppCompatActivity implements View.OnClickL
 
                 @Override
                 public void onProgress(int i, String s) {
-                    mProgressDialog = new ProgressDialog(getApplicationContext());
-                    mProgressDialog.setMessage("拼命登录中。。");
-                    mProgressDialog.show();
+
 
                 }
             });
