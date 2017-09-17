@@ -169,7 +169,8 @@ public class LoginAndRegister extends AppCompatActivity implements View.OnClickL
                     //                    SpUtil.putBooelan(LoginAndRegister.this, "islogined", true);
                     //                    SpUtil.putString(LoginAndRegister.this, "nickname", username.getText().toString());
                     //                    SpUtil.putBooelan(LoginAndRegister.this, "huanxindenglu", true);
-
+                    Model.getInstance().loginSucess(new huiiuh.com.chat.model.bean.UserInfo
+                            (username.getText().toString()));
                     Model.getInstance().getUserAccountDao().addAccount(new huiiuh.com.chat.model.bean.UserInfo(username.getText().toString()));
                     Intent intent = new Intent(LoginAndRegister.this, MainActivity.class);
                     startActivity(intent);

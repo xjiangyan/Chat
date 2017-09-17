@@ -17,6 +17,7 @@ import com.hyphenate.chat.EMClient;
 
 import huiiuh.com.chat.R;
 import huiiuh.com.chat.control.activity.LoginAndRegister;
+import huiiuh.com.chat.model.Model;
 
 /**
  * @author Admin
@@ -36,6 +37,7 @@ public class Me_Fragment extends Fragment {
             switch (msg.what) {
                 case 0:
                     Toast.makeText(getContext(), "退出成功", Toast.LENGTH_SHORT).show();
+                    Model.getInstance().getDbManager().close();
                     Intent intent = new Intent(getActivity(), LoginAndRegister.class);
                     startActivity(intent);
                     getActivity().finish();

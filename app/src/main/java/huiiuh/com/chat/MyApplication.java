@@ -2,6 +2,7 @@ package huiiuh.com.chat;
 
 import android.app.ActivityManager;
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
@@ -23,6 +24,9 @@ import static com.hyphenate.chat.EMClient.TAG;
  * @updateDes ${TODO}
  */
 public class MyApplication extends Application {
+
+    private static Context mContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -50,6 +54,9 @@ public class MyApplication extends Application {
 
         //初始化数据模型层类
         Model.getInstance().init(this);
+
+        // 初始化全局上下文对象
+        mContext = this;
     }
 
     private String getAppName(int pID) {
@@ -70,5 +77,10 @@ public class MyApplication extends Application {
             }
         }
         return processName;
+    }
+
+    // 获取全局上下文对象
+    public static Context getGlobalApplication() {
+        return mContext;
     }
 }

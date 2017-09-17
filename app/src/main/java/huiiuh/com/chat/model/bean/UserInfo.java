@@ -19,6 +19,9 @@ public class UserInfo {
         this.name = name;
     }
 
+    public UserInfo() {
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +

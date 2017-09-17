@@ -157,6 +157,8 @@ public class MainActivity extends FragmentActivity {
                 finish();
             } else {
                 setContentView(R.layout.activity_main);
+                Model.getInstance().loginSucess(new huiiuh.com.chat.model.bean.UserInfo(EMClient.getInstance().getCurrentUser()));
+
                 findViews();
                 init();
             }

@@ -66,8 +66,7 @@
         <activity android:name=".control.activity.LoginAndRegister">
         </activity>
 
-
-        <!--qq登录-->
+        <!-- qq登录 -->
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -89,8 +88,10 @@
                 <!-- 100380359 100381104 222222 -->
             </intent-filter>
         </activity>
-
-
+        <activity android:name=".control.activity.AddContactActivity">
+        </activity>
+        <activity android:name=".control.activity.InviteActivity">
+        </activity>
     </application>
 
 </manifest>
